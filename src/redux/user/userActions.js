@@ -25,13 +25,13 @@ export const fetchUserFailure = (error) => {
   };
 };
 
-const fetchUsers = () => {
+export const fetchUsers = () => {
   return function (dispatch) {
     dispatch(fetchUserRequest());
     axios
       .get("https://jsonplaceholder.typicode.com/users")
       .then((response) => {
-        const users = response.data.map((user) => user.id);
+        const users = response.data;
         dispatch(fetchUserSuccess(users));
       })
       .catch((error) => {
